@@ -27,17 +27,6 @@ public class User {
 	private String lastName;
 	private String password;
 	
-	@OneToOne
-	@JoinColumn(referencedColumnName = "role_id")
-	@JsonInclude(JsonInclude.Include.NON_NULL)
-	private UserRole userRole;
-	
-	public UserRole getUserRole() {
-		return userRole;
-	}
-	public void setUserRole(UserRole userRole) {
-		this.userRole = userRole;
-	}
 	public User(int userId, String userName, String firstName, String lastName, String password) {
 		super();
 		this.userId = userId;
