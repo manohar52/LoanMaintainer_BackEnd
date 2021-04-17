@@ -21,7 +21,6 @@ public class Status {
 		return description;
 	}
 	public Status(long statusId, String description) {
-		super();
 		this.statusId = statusId;
 		this.description = description;
 	}

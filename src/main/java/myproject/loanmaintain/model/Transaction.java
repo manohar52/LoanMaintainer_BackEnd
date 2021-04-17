@@ -40,7 +40,6 @@ public class Transaction {
 	
 	public Transaction(Long transactionId, User sender, User receiver, String currency, Long amount, Date tms,
 			Status status) {
-		super();
 		this.transactionId = transactionId;
 		this.sender = sender;
 		this.receiver = receiver;
