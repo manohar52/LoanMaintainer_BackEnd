@@ -1,25 +1,30 @@
 package myproject.loanmaintain.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.Table;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Table
 public class Status {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(name = "status_id")
 	private long statusId;
-	private String description;	
-	
+	private String description;
+
+	public long getStatusId() {
+		return statusId;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public Status(long statusId, String description) {
+		super();
+		this.statusId = statusId;
+		this.description = description;
+	}
+	public Status() {
+	}	
 }
