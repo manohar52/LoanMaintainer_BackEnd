@@ -31,6 +31,6 @@ public class TransactionController {
 	@PostMapping("/addNew")
 	public ResponseEntity<Transaction> addTransaction(@RequestBody Transaction transaction) {
 		System.out.println("Inside add Transaction");
-		return ResponseEntity.ok(transactionRepository.save(transaction));
+		return ResponseEntity.ok(transactionRepository.saveAndFlush(transaction));
 	}	
 }

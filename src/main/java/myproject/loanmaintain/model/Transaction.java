@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table
@@ -20,13 +21,15 @@ public class Transaction {
 	private Long transactionId;
 	
 	@OneToOne
-	@JoinColumn(referencedColumnName = "userId")
+	@JoinColumn(name="sender",referencedColumnName = "userId")
+	@JsonProperty("sender")
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private User sender;
 	
 	@OneToOne
-	@JoinColumn(referencedColumnName = "userId")
+	@JoinColumn(name="receiver",referencedColumnName = "userId")
 	@JsonInclude(JsonInclude.Include.NON_NULL)
+	@JsonProperty("receiver")
 	private User receiver;
 	
 	private String currency;
@@ -34,8 +37,9 @@ public class Transaction {
 	private Date timestamp;
 	
 	@OneToOne
-	@JoinColumn(referencedColumnName = "statusId")
+	@JoinColumn(name="status_id",referencedColumnName = "statusId")
 	@JsonInclude(JsonInclude.Include.NON_NULL)
+	@JsonProperty("status")
 	private Status status;
 	
 	public Transaction(Long transactionId, User sender, User receiver, String currency, Long amount, Date tms,
@@ -53,10 +57,10 @@ public class Transaction {
 	public Long getTransactionId() {
 		return transactionId;
 	}
-	public User getSenderUser() {
+	public User getSender() {
 		return sender;
 	}
-	public User getReceiverUser() {
+	public User getReceiver() {
 		return receiver;
 	}
 	public String getCurrency() {
