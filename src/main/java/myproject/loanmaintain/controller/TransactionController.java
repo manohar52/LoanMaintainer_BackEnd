@@ -3,9 +3,14 @@ package myproject.loanmaintain.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,4 +50,18 @@ public class TransactionController {
 		int id = userRepo.getUserByUsername(receiver);
 		return transactionRepo.getTransactionsByReceiver(id);
 	}
+	@Autowired
+	private TransactionRepository transactionRepository;
+	
+	@ApiOperation(value="add new transaction")
+	@ApiResponses(value= {
+			@ApiResponse(code=200,message="Successfull"),
+			@ApiResponse(code=400,message="Bad Request"),
+			@ApiResponse(code=404,message="Not found"),
+			@ApiResponse(code=500,message="Internal Server error"),
+	})
+	@PostMapping
+	public ResponseEntity<Transaction> addTransaction(@RequestBody Transaction transaction) {
+		return ResponseEntity.ok(transactionRepository.saveAndFlush(transaction));
+	}	
 }

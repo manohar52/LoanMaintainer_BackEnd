@@ -42,14 +42,14 @@ public class Transaction {
 	@JsonProperty("status")
 	private Status status;
 	
-	public Transaction(Long transactionId, User sender, User receiver, String currency, Long amount, Date tms,
+	public Transaction(Long transactionId, User sender, User receiver, String currency, Long amount, Date timestamp,
 			Status status) {
 		this.transactionId = transactionId;
 		this.sender = sender;
 		this.receiver = receiver;
 		this.currency = currency;
 		this.amount = amount;
-		this.timestamp = tms;
+		this.timestamp = timestamp;
 		this.status = status;
 	}
 	public Transaction() {
@@ -69,7 +69,7 @@ public class Transaction {
 	public double getAmount() {
 		return amount;
 	}
-	public Date getTms() {
+	public Date getTimestamp() {
 		return timestamp;
 	}
 	public Status getStatus() {
